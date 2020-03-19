@@ -3,23 +3,23 @@ let buttonAdd = document.getElementById('add');
 let inputAdd = document.getElementById('novaTarefa');
 let listaTarefas = []; //inicio com local storage vazio
 
-//se existe uma tarefa em local storage, pega  o item em json e muda pra array. Se não existe, adiciona a tarefa, convertendo o array em json
+//se existe uma tarefa em local storage, pega o item em json e muda pra array. Se não existe, adiciona a tarefa, convertendo o array em json
 if(localStorage.getItem('listaTarefas')){
-    listaTarefas = JSON.parse(localStorage.getItem('listaTarefas')); //passa um json e converte em array ou objeto do js
+    listaTarefas = JSON.parse(localStorage.getItem('listaTarefas')); 
 } else {
     listaTarefas = []; //tem que criar uma chave em local storage
-    localStorage.setItem("listaTarefas", JSON.stringify(listaTarefas)); //convertendo um array em string json. o parse faz o oposto. localStorage é um objeto pronto. Criou o espaço.
+    localStorage.setItem("listaTarefas", JSON.stringify(listaTarefas));
 }
 
-mostrarNaTela(listaTarefas); //executando a função que recebe uma lista de tarefas
+mostrarNaTela(listaTarefas); 
 
 buttonAdd.onclick = function(){
 
     let valorDigitado = inputAdd.value;
     listaTarefas.push(valorDigitado);
-    gerarTarefa(valorDigitado, listaTarefas.length -1); //executando a função, criando uma tarefa nova com a posição dela dentro do array - na hora do push, vai sempre pra última posição, por isso o lenght -1.
+    gerarTarefa(valorDigitado, listaTarefas.length -1); //colocando o valorDigitado no array na última posição, por isso o lenght -1.
 
-    localStorage.setItem("listaTarefas", JSON.stringify(listaTarefas)); //atualizar array com as novas informações do push
+    localStorage.setItem("listaTarefas", JSON.stringify(listaTarefas)); //atualizando o localStorage
 
 }
 
